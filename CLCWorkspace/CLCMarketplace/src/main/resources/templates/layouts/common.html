@@ -2,7 +2,7 @@
 <!-- Common Header Fragment -->
 <div th:fragment="header">
 	<div align="center">
-		<h1>The CLC Marketplace</h1>
+		<h1 style="color:purple;">The CLC Marketplace</h1>
 	</div>
 	<div class="bs-example">
 		<nav class="navbar navbar-default">
@@ -33,11 +33,11 @@
 	</div>
 	<!-- Page Title and Log -->
 	<h2 th:text="${title}">Default Message Text</h2><br/>
-	<img th:src="@{/images/gcu-logo.jpg}"/><br/><br/>
+	<img style="width:25%" th:src="@{/images/clc-logo.png}"/><br/><br/>
 </div>
 
 <!-- Common Footer Fragment -->
 <div th:fragment="footer"
-	><h5 style="color:purple; text-align: center;position: fixed;bottom: 0;width: 100%;">Copyright 2020 Grand Canyon University</h5>
+	><h5 style="color:purple; text-align: center;position: fixed;bottom: 0;width: 100%;">Copyright 2022 CLC Inc.</h5>
 </div>
 	 				
