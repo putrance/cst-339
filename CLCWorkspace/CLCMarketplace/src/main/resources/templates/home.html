@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
+	<h2 th:text="${title}">This is my default text </h2><br/>
+	<body>
+		<div layout:fragment="content">
+		<h3><u>Current Available Products</u></h3><br/>
+		<table style="width:50%" class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th style="text-align:center">Shirt Color</th>
+					<th style="text-align:center">Shirt Size</th>
+					<th style="text-align:center">In Stock</th>
+			</thead>
+			<tbody>
+				<tr th:each="shirt : ${shirts}">
+					<td style="text-align:center"><h5 th:text="${shirt.color}">blue</h5></td>
+					<td style="text-align:center"><h5 th:text="${shirt.size}">large</h5></td>
+					<td style="text-align:center"><h5 th:text="${shirt.stock}">large</h5></td>
+				</tr>
+			</tbody>
+		</table>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		</div>
+	</body><br/>
