@@ -1,11 +1,12 @@
 package com.gcu.model;
 
+// Model for shirts
 public class ShirtModel{
 	private String color;
 	private String size;
 	private int stock;
 	
-	// Constructor
+	// Constructor for shirts
 	public ShirtModel(String color, String size, int stock){
 		this.color = color;
 		this.size = size;
