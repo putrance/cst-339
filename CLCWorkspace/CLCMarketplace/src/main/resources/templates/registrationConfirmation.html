@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" layout:decorate:"layouts/defaultTemplate">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate:"layouts/defaultTemplate">
 	<head>
 		<meta charset="UTF=8">
 		<title>Hello World</title>
@@ -21,7 +21,7 @@
 				</thead>
 				<tbody>
 					<tr th:if="${users.empty}">
-						<td style="text-align: center" colspan="4"> No users exist</td>
+						<td style="text-align: center" colspan="6"> No users exist</td>
 					</tr>
 					<tr th:each="user : ${users}">
 						<td style="text-align:center"><h5 th:text="${user.firstName}">default</h5></td>
