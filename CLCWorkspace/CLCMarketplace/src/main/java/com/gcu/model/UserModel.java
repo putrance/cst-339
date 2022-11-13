@@ -40,6 +40,11 @@ public class UserModel {
 		this.password = password;
 	}
 
+	public UserModel() {
+		super();
+	}
+
+
 	public String getFirstName() {
 		return firstName;
 	}
