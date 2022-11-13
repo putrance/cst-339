@@ -32,7 +32,9 @@ public class RegistrationController {
 			System.out.println(String.format("Form with Username of %s and Password of %s", user.getUsername(), user.getPassword()));
 			
 			List<UserModel> users = new ArrayList<UserModel>();
-			users.add(new UserModel(user.getFirstName(), user.getLastName(), user.getEmail(), user.getPhoneNumber(), user.getUsername(), user.getPassword()));
+			users.add(user);
+			
+			//new UserModel(user.getFirstName(), user.getLastName(), user.getEmail(), user.getPhoneNumber(), user.getUsername(), user.getPassword())
 			
 			model.addAttribute("title", "My users");
 			model.addAttribute("users", users);					

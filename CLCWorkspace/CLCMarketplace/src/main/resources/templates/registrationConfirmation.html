@@ -11,8 +11,8 @@
 			<table style="width:50%">
 				<thead>
 					<tr>
-						<th style="text-align:center">Frist Name</th>
-						<th style="text-align:center">Last name Name</th>
+						<th style="text-align:center">First Name</th>
+						<th style="text-align:center">Last Name</th>
 						<th style="text-align:center">Email</th>
 						<th style="text-align:center">Phone Number</th>
 						<th style="text-align:center">User Name</th>
@@ -21,9 +21,9 @@
 				</thead>
 				<tbody>
 					<tr th:if="${users.empty}">
-						<td style="text-align: center" colspan="6"> No users exist</td>
+						<td style="text-align: center" colspan="4"> No users exist</td>
 					</tr>
-					<tr th:each="users : ${users}">
+					<tr th:each="user : ${users}">
 						<td style="text-align:center"><h5 th:text="${user.firstName}">default</h5></td>
 						<td style="text-align:center"><h5 th:text="${user.lastName}">default</h5></td>
 						<td style="text-align:center"><h5 th:text="${user.email}">default</h5></td>
