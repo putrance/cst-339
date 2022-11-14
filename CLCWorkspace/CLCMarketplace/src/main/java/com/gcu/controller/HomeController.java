@@ -18,6 +18,7 @@ public class HomeController {
 	@GetMapping("/")
 	public String printHome(Model model)
 	{
+				
 		// Create some shirts to populate table on homepage (To be updated with DB Query)
 		List<ShirtModel> shirts = new ArrayList<ShirtModel>();
 		shirts.add(new ShirtModel("blue", "small", 2));
