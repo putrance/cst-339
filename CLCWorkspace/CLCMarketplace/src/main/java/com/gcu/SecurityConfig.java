@@ -37,6 +37,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     http.authorizeRequests()
         .antMatchers("/login").permitAll()
         .antMatchers("/register").permitAll()
+        .antMatchers("/doRegister").permitAll()
+        .antMatchers("/Products").permitAll()
+        .antMatchers("/ProductsAddation").permitAll()
+        .antMatchers("/doProduct").permitAll()
         .antMatchers("/").permitAll()
         .antMatchers("/**").hasAnyRole("USER", "ADMIN")
         .antMatchers("/admin/**").hasAnyRole("ADMIN")
@@ -75,7 +79,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   public void configure(WebSecurity web) {
     web.ignoring()
-        .antMatchers("/resources/**", "/static/**", "/images/**");
+        .antMatchers("/resources/**", "/static/**", "/images/**", "/Products/**", "/ProductAddition**");
   }
 
 }
