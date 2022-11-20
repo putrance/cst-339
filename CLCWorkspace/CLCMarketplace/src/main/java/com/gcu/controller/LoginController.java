@@ -8,12 +8,19 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.gcu.model.LoginModel;
 
 @Controller
 @RequestMapping("/")
 public class LoginController
 {
+//	@Autowired
+//	private CustomAuthenticationSuccessHandler loginSuccessHandler;
+//	
+//	@Autowired
+//	private CustomAuthenticationFailureHandler loginFailureHandler;
+	
 	@GetMapping("/login")
 	public String display(Model model) {
 		model.addAttribute("title", "Login Form");
@@ -28,7 +35,7 @@ public class LoginController
 			model.addAttribute("title", "Login Form");
 			return "login";
 		}
-	
+		
 		return "redirect:/";
 	}
 }
