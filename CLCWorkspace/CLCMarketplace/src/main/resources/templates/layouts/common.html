@@ -23,10 +23,17 @@
 	 				<li><a href="/products">Products</a></li>
 	 				<li><a href="/aboutus">About Us</a></li>
 	 				<li><a href="/contactus">Contact Us</a></li>
-	 			</ul>
+	 			</ul>	
 	 			<ul class="nav navbar-nav navbar-right">
+	 			<span th:switch="${#authentication.getName()}">
+	 			<span th:if="${#authentication.isEmpty()}">
 	 				<li><a href="/login">Login</a></li>
 	 				<li><a href="/register">Register Now</a></li>
+	 			</span>
+	 			<span th:unless="${#authentication.isEmpty()}">
+	 				<li><h3 th:text="Logged in as ${#authentication.getName()}">Default Logged In Message</h3></li>
+	 			</span>
+	 			</div>
 	 			</ul>
 	 		</div>
 		</nav>
