@@ -51,7 +51,7 @@ public class RegistrationController {
 			
 			//new UserModel(user.getFirstName(), user.getLastName(), user.getEmail(), user.getPhoneNumber(), user.getUsername(), user.getPassword())
 			
-			model.addAttribute("title", "My users");
+			model.addAttribute("title", "Registration Complete");
 			model.addAttribute("users", users);					
 			
 			return "registrationConfirmation";
