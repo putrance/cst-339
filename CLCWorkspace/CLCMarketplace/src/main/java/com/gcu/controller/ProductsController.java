@@ -17,7 +17,7 @@ import com.gcu.model.UserModel;
 
 @Controller
 @RequestMapping("/")
-public class ProdcutsController {
+public class ProductsController {
 	@GetMapping("/ProductsAddition")
 	public String display(Model model) {
 		model.addAttribute("title", "Product Addition Form");
