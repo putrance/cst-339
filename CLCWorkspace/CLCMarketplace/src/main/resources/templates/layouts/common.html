@@ -21,6 +21,7 @@
 	 			<ul class="nav navbar-nav">
 	 				<li><a href="/">Home</a></li>
 	 				<li><a href="/products">Products</a></li>
+	 				<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/ProductsAddition}">Add Products</a></li>
 	 				<li><a href="/aboutus">About Us</a></li>
 	 				<li><a href="/contactus">Contact Us</a></li>
 	 			</ul>
