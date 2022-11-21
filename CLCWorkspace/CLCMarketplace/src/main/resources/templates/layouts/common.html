@@ -24,11 +24,14 @@
 	 				<li><a href="/aboutus">About Us</a></li>
 	 				<li><a href="/contactus">Contact Us</a></li>
 	 			</ul>
-	 			<ul class="nav navbar-nav navbar-right">
-	 				<li><a href="/login">Login</a></li>
-	 				<li><a href="/register">Register Now</a></li>
-	 			</ul>
-	 		</div>
+	 				 <ul class="nav navbar-nav navbar-right">
+                     <li sec:authorize="isAnonymous()"><a th:href="@{/login}">Login</a></li>
+                     <li sec:authorize="isAnonymous()"><a th:href="@{/register}">Register</a></li>
+                       <li sec:authorize="isAuthenticated()"><a sec:authentication="name">Bob</a></li>
+<!--                     <li sec:authorize="isAuthenticated()"><a sec:authentication="name">Bob</a> -->
+<!--                     <li sec:authorize="isAuthenticated()"><th:text="Logged in as ${#authentication.principal.name}"> -->
+                     <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+                 </ul>
 		</nav>
 	</div>
 	<!-- Page Title and Log -->
@@ -40,4 +43,3 @@
 <div th:fragment="footer"
 	><h5 style="color:purple; text-align: center;position: fixed;bottom: 0;width: 100%;">Copyright 2022 CLC Inc.</h5>
 </div>
-	 				
