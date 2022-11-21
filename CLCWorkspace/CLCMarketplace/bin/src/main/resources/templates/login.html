@@ -1,0 +1,39 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
+	<h2 th:text="${title}">This is my default text </h2><br/>
+	<body>
+		<div layout:fragment="content">
+		<div th:if="${param.error}">
+    		Invalid username and password.
+		</div>
+		<div th:if="${param.logout}">
+    		You have been logged out.
+		</div>
+		<form action="#" th:action="@{doLogin}" th:object="${loginModel}" method="post">
+			<table>
+				<tr>
+					<td>User Name:</td><td><input name="username" placeholder="Username" type="text" th:field="*{username}" ></td><td><h5 style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">User Name Error</h5></td>
+				</tr>
+				<tr>
+					<td>Password:</td><td><input name="password" placeholder="Password" type="password" th:field="*{password}" ></td><td><h5 style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</h5></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="Submit" /></td>
+				</tr>
+			</table>
+			
+<!--		<form method="post" th:action="@{/process-login}" th:object="${loginModel}">
+    		<div>
+        		<td><input name="username" placeholder="Username" type="text" th:field="*{password}" ></td><td><h5 style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</h5></td>
+    		</div>
+    		<div>
+        		<td><input name="password" placeholder="Password" type="password" th:field="*{password}" ></td><td><h5 style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</h5></td>
+    		</div>
+    			<input type="submit" value="Log in"/>
+		</form>
+			<div th:if="${#fields.hasErrors('*')}">List of Errors</div>
+			<div th:each="err : ${#fields.errors('*')}">
+				<span style="color:red" th:text="${err}" class="fieldError"></span>
+			</div>
+-->		</form>
+		</div>	
+	</body><br/>
