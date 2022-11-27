@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,12 +13,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.gcu.data.ProductDataAccess;
+import com.gcu.data.UserDataAccess;
+import com.gcu.entity.ProductEntity;
+import com.gcu.entity.UserEntity;
 import com.gcu.model.ProductModel;
-import com.gcu.model.UserModel;
+
+//TODO: Fix data validation error
 
 @Controller
 @RequestMapping("/")
 public class ProductsController {
+	
+	@Autowired
+	ProductDataAccess service;
+	
 	@GetMapping("/ProductsAddition")
 	public String display(Model model) {
 		model.addAttribute("title", "Product Addition Form");
@@ -50,7 +60,7 @@ public class ProductsController {
 		}
 		products.add(product);
 		
-		
+		service.create(new ProductEntity(product.getColor(), product.getSize(), product.getStock()));
 		
 		model.addAttribute("title", "My products");
 		model.addAttribute("products", products);					
