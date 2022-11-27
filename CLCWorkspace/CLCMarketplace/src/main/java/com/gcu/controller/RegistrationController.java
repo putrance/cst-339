@@ -9,6 +9,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,6 +23,9 @@ public class RegistrationController {
 		
 		@Autowired
 		UserDataAccess service;
+		
+		@Autowired
+		private  PasswordEncoder passwordEncoder;
 		
 		@GetMapping("/register")
 		public String display(Model model) {
@@ -39,16 +43,17 @@ public class RegistrationController {
 				return "register";
 			}
 			
+			String encodedPassword = passwordEncoder.encode(registration.getPassword());
 			
 			service.create(new UserEntity(registration.getFirstName(), registration.getLastName(),
 					registration.getEmail(), registration.getPhoneNumber(), 
-					registration.getUsername(), registration.getPassword()));
+					registration.getUsername(), encodedPassword));
 			
 			
 			List<UserModel> users = new ArrayList<UserModel>();
 			users.add(new UserModel(registration.getFirstName(), registration.getLastName(),
 					registration.getEmail(), registration.getPhoneNumber(), 
-					registration.getUsername(), registration.getPassword()));
+					registration.getUsername(),encodedPassword));
 			
 			
 			model.addAttribute("title", "Registration Complete");
