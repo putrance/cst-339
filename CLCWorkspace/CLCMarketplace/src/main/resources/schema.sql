@@ -1,3 +1,6 @@
+
+USE clc_marketplace;
+
 create table users(
 	username varchar(50) not null primary key,
 	password varchar(500) not null,
@@ -5,7 +8,7 @@ create table users(
 	`phoneNumber` varchar(45) DEFAULT NULL,
 	`firstName` varchar(45) DEFAULT NULL,
 	`lastName` varchar(45) DEFAULT NULL,
-	enabled boolean not null
+	enabled boolean not null default 1
 );
 
 create table authorities (
