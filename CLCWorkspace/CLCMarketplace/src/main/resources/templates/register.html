@@ -7,7 +7,7 @@
 	
 	<body>
 		<div layout:fragment="content">
-			<form action="#" th:action="@{doRegister}" th:object="${user}" method="post">
+			<form action="#" th:action="@{doRegister}" th:object="${registrationForm}" method="post">
 				<table>
 					<tr>
 						<td>First Name:</td>
@@ -43,10 +43,6 @@
 						<td colspan="6"><input type="submit" value="Submit" /></td>
 					</tr>
 				</table>
-				<div th:if="${#fields.hasErrors('*')}">List of Errors</div>
-				<div th:each="err : ${#fields.errors('*')}">
-					<span style="color:red" th:text="${err}" class="fieldError"></span>
-				</div>
 			</form>
 		</div>
 	</body>
