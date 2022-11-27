@@ -25,13 +25,6 @@ public class UserDataAccess implements UserDataAccessInterface<UserEntity> {
 		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
 	}
 
-	/*
-	public UserDataAccess(UsersRepository userRepository) {
-		super();
-		this.userRepository = userRepository;
-	}
-	*/
-
 	@Override
 	public List<UserEntity> findAll() {
 		// TODO Auto-generated method stub
@@ -56,6 +49,7 @@ public class UserDataAccess implements UserDataAccessInterface<UserEntity> {
 					user.getPhoneNumber(),
 					user.getFirstName(),
 					user.getLastName());
+
 			//this.userRepository.save(new UserEntity("test","test","test","test","test","test"));
 			
 			jdbcTemplateObject.update(sql_authorities_user,

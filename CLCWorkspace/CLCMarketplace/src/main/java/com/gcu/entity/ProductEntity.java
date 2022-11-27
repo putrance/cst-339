@@ -1,20 +1,27 @@
-package com.gcu.model;
+package com.gcu.entity;
 
-//model for Product additions
-public class ProductModel {
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
+
+@Table("users")
+public class ProductEntity {
+	
+	@Column("color")
 	private String color;
+	@Column("size")
 	private String size;
+	@Column("stock")
 	private int stock;
 	
 	//Constructor
-	public ProductModel(String color, String size, int stock) {
+	public ProductEntity(String color, String size, int stock) {
 		super();
 		this.color = color;
 		this.size = size;
 		this.stock = stock;
 	}
 	//default constructor
-	public ProductModel() {
+	public ProductEntity() {
 		super();
 	}
 

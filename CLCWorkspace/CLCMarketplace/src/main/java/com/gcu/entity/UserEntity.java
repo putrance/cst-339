@@ -1,6 +1,5 @@
 package com.gcu.entity;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -12,9 +11,32 @@ public class UserEntity {
 	private String firstName;
 	@Column("lastName")
 	private String lastName;
+	@Column("email")
+	private String email;
+	@Column("phoneNumber")
+	private String phoneNumber;
+	@Column("username")
+	private String username;
+	@Column("password")
+	private String password;
+	@Column("authority")
+	private String authority;
+	
+	public UserEntity(String firstName, String lastName, String email, String phoneNumber, String username,
+			String password) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.username = username;
+		this.password = password;
+	}
+	
+
 	public String getFirstName() {
 		return firstName;
-	}
+	}	
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
@@ -48,31 +70,8 @@ public class UserEntity {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
 	public String getAuthority() {
 		this.authority = "ROLE_USER";
 		return authority;
-	}
-
-	@Column("email")
-	private String email;
-	@Column("phoneNumber")
-	private String phoneNumber;
-	@Column("username")
-	private String username;
-	@Column("password")
-	private String password;
-	@Column("authority")
-	private String authority;
-	
-	public UserEntity(String firstName, String lastName, String email, String phoneNumber, String username,
-			String password) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.username = username;
-		this.password = password;
 	}
 }
