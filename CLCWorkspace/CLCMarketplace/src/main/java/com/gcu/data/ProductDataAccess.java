@@ -8,46 +8,45 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import com.gcu.data.repository.ProductsRepository;
 import com.gcu.data.repository.UsersRepository;
+import com.gcu.entity.ProductEntity;
 import com.gcu.entity.UserEntity;
 
 @Service
-public class UserDataAccess implements UserDataAccessInterface<UserEntity> {
+public class ProductDataAccess implements UserDataAccessInterface<ProductEntity> {
 	@Autowired
-	private UsersRepository userRepository;
+	private ProductsRepository ProductsRepository;
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplateObject;
 	
 	
-	public UserDataAccess(UsersRepository userRepository, DataSource dataSource, JdbcTemplate jdbcTemplateObject) {
-		this.userRepository = userRepository;
+	public ProductDataAccess(ProductsRepository ProductsRepository, DataSource dataSource, JdbcTemplate jdbcTemplateObject) {
+		this.ProductsRepository = ProductsRepository;
 		this.dataSource = dataSource;
 		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
 	}
-
+	
 	@Override
-	public List<UserEntity> findAll() {
+	public List<ProductEntity> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public UserEntity findById(int id) {
+	public ProductEntity findById(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean create(UserEntity user) {
-		String sql = "INSERT INTO USERS(username, password, email, phoneNumber, firstName, lastName) VALUES(?, ?, ?, ?, ?, ?)";
+	public boolean create(ProductEntity product) {
+		String sql = "INSERT INTO products(color, size, stock) VALUES(?, ?, ?)";
 		try {
 			jdbcTemplateObject.update(sql,
-					user.getUsername(),
-					user.getPassword(),
-					user.getEmail(),
-					user.getPhoneNumber(),
-					user.getFirstName(),
-					user.getLastName());
+					product.getColor(),
+					product.getSize(),
+					product.getStock());
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -57,13 +56,13 @@ public class UserDataAccess implements UserDataAccessInterface<UserEntity> {
 	}
 
 	@Override
-	public boolean update(UserEntity t) {
+	public boolean update(ProductEntity t) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean delete(UserEntity t) {
+	public boolean delete(ProductEntity t) {
 		// TODO Auto-generated method stub
 		return false;
 	}
