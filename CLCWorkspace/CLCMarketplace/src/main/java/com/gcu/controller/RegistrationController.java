@@ -19,12 +19,12 @@ public class RegistrationController {
 		@GetMapping("/register")
 		public String display(Model model) {
 			model.addAttribute("title", "Registration Form");
-			model.addAttribute("user", new UserModel());
-			model.addAttribute("users", new ArrayList<UserModel>());
+			model.addAttribute("registrationForm", new RegistrationForm());
+			//model.addAttribute("users", new ArrayList<UserModel>());
 			return "register";
 		}
 		@PostMapping("/doRegister")
-		public String doRegister(@Valid UserModel user, BindingResult bindingResult, Model model) {
+		public String doRegister(@Valid RegistrationForm registration, BindingResult bindingResult, Model model) {
 			
 			if(bindingResult.hasErrors()) {
 				model.addAttribute("title", "Registration Form");
@@ -32,24 +32,11 @@ public class RegistrationController {
 				return "register";
 			}
 			
-			System.out.println(String.format("Form with Username of %s and Password of %s", user.getUsername(), user.getPassword()));
+			List<UserModel> users = new ArrayList<UserModel>();
+			users.add(new UserModel(registration.getFirstName(), registration.getLastName(),
+					registration.getEmail(), registration.getPhoneNumber(), 
+					registration.getUsername(), registration.getPassword()));
 			
-
-			List<UserModel> users = null;
-			//= (List<UserModel>) model.getAttribute("users");
-			
-			if(model.containsAttribute("users")) {
-				List<UserModel> userList = (List<UserModel>) model.getAttribute("users");
-				if(userList != null) {
-					users = userList;
-				}
-			}
-			if(users == null) {
-				users = new ArrayList<UserModel>();
-			}
-			users.add(user);
-			
-			//new UserModel(user.getFirstName(), user.getLastName(), user.getEmail(), user.getPhoneNumber(), user.getUsername(), user.getPassword())
 			
 			model.addAttribute("title", "Registration Complete");
 			model.addAttribute("users", users);					
