@@ -47,6 +47,7 @@ public class UserDataAccess implements UserDataAccessInterface<UserEntity> {
 	@Override
 	public boolean create(UserEntity user) {
 		String sql = "INSERT INTO USERS(username, password, email, phoneNumber, firstName, lastName) VALUES(?, ?, ?, ?, ?, ?)";
+		String sql_authorities_user = "INSERT INTO authorities(username, authority) VALUES(?, ?)";
 		try {
 			jdbcTemplateObject.update(sql,
 					user.getUsername(),
@@ -56,6 +57,10 @@ public class UserDataAccess implements UserDataAccessInterface<UserEntity> {
 					user.getFirstName(),
 					user.getLastName());
 			//this.userRepository.save(new UserEntity("test","test","test","test","test","test"));
+			
+			jdbcTemplateObject.update(sql_authorities_user,
+					user.getUsername(),
+					user.getAuthority());
 		}
 		catch(Exception e) {
 			e.printStackTrace();
