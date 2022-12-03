@@ -17,7 +17,9 @@ import com.gcu.data.ProductDataAccess;
 import com.gcu.data.UserDataAccess;
 import com.gcu.entity.ProductEntity;
 import com.gcu.entity.UserEntity;
+import com.gcu.model.ProductForm;
 import com.gcu.model.ProductModel;
+import com.gcu.model.UserModel;
 
 //TODO: Fix data validation error
 
@@ -32,11 +34,11 @@ public class ProductsController {
 	public String display(Model model) {
 		model.addAttribute("title", "Product Addition Form");
 		model.addAttribute("product", new ProductModel());
-		model.addAttribute("products", new ArrayList<ProductModel>());
+		model.addAttribute("productForm", new ProductForm());
 		return "ProductsAddition";
 	}
 	@PostMapping("/doProduct")
-	public String doProduct(@Valid ProductModel product, BindingResult bindingResult, Model model) {
+	public String doProduct(@Valid ProductForm product, BindingResult bindingResult, Model model) {
 		
 		if(bindingResult.hasErrors()) {
 			model.addAttribute("title", "Product Added");
@@ -46,21 +48,26 @@ public class ProductsController {
 		System.out.println(String.format("Form of added products", product.getColor(), product.getSize(), product.getStock()));
 		
 
-		List<ProductModel> products = null;
+		List<ProductForm> products = null;
 		
 		
 		if(model.containsAttribute("products")) {
-			List<ProductModel> productsList = (List<ProductModel>) model.getAttribute("products");
+			List<ProductForm> productsList = (List<ProductForm>) model.getAttribute("products");
 			if(productsList != null) {
 				products = productsList;
 			}
 		}
 		if(products == null) {
-			products = new ArrayList<ProductModel>();
+			products = new ArrayList<ProductForm>();
 		}
 		products.add(product);
 		
 		service.create(new ProductEntity(product.getColor(), product.getSize(), product.getStock()));
+		
+		
+		List<ProductForm> productsList = new ArrayList<ProductForm>();
+		productsList.add(new ProductForm(product.getColor(), product.getSize(), product.getStock()));
+		
 		
 		model.addAttribute("title", "My products");
 		model.addAttribute("products", products);					
