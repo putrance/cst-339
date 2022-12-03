@@ -3,7 +3,7 @@ package com.gcu.entity;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-@Table("users")
+@Table("products")
 public class ProductEntity {
 	
 	@Column("color")
