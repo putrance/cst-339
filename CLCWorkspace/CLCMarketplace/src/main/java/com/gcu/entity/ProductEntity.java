@@ -3,7 +3,7 @@ package com.gcu.entity;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-@Table("users")
+@Table("products")
 public class ProductEntity {
 	
 	@Column("color")
@@ -12,13 +12,15 @@ public class ProductEntity {
 	private String size;
 	@Column("stock")
 	private int stock;
+	private int id;
 	
 	//Constructor
-	public ProductEntity(String color, String size, int stock) {
+	public ProductEntity(String color, String size, int stock, int id) {
 		super();
 		this.color = color;
 		this.size = size;
 		this.stock = stock;
+		this.setId(id);
 	}
 	//default constructor
 	public ProductEntity() {
@@ -43,6 +45,12 @@ public class ProductEntity {
 	}
 	public void setStock(int stock) {
 		this.stock = stock;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	
