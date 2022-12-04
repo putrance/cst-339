@@ -10,10 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import com.gcu.data.repository.ProductsRepository;
-import com.gcu.data.repository.UsersRepository;
-import com.gcu.entity.OrderEntity;
 import com.gcu.entity.ProductEntity;
-import com.gcu.entity.UserEntity;
 
 @Service
 public class ProductDataAccess implements UserDataAccessInterface<ProductEntity> {
@@ -74,9 +71,17 @@ public class ProductDataAccess implements UserDataAccessInterface<ProductEntity>
 	}
 
 	@Override
-	public boolean delete(ProductEntity t) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean delete(ProductEntity product) {
+		String sql = "DELETE FROM products WHERE id = ?";
+		try {
+			jdbcTemplateObject.update(sql,
+					product.getId());
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 	
 }

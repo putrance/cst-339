@@ -5,11 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.gcu.data.OrderDataService;
 import com.gcu.data.ProductDataAccess;
-import com.gcu.entity.OrderEntity;
 import com.gcu.entity.ProductEntity;
-import com.gcu.model.OrderModel;
 import com.gcu.model.ProductModel;
 
 public class ProductsBusinessService implements ProductsBusinessInterface {
@@ -31,7 +28,7 @@ public class ProductsBusinessService implements ProductsBusinessInterface {
 		
 		List<ProductModel> productDomain = new ArrayList<ProductModel>();
 		for(ProductEntity entity : productEntity) {
-			productDomain.add(new ProductModel(entity.getColor(), entity.getSize(), entity.getStock()));
+			productDomain.add(new ProductModel(entity.getColor(), entity.getSize(), entity.getStock(), entity.getId()));
 		}		
 		return productDomain;
 	}
@@ -46,6 +43,12 @@ public class ProductsBusinessService implements ProductsBusinessInterface {
 	public void destroy() {
 		System.out.println("Hello from the OrdersBusinessService destroy");
 		
+	}
+
+	@Override
+	public List<ProductModel> deleteProducts() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
