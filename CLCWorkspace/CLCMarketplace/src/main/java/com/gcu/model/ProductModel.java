@@ -5,13 +5,15 @@ public class ProductModel {
 	private String color;
 	private String size;
 	private int stock;
+	private int id;
 	
 	//Constructor
-	public ProductModel(String color, String size, int stock) {
+	public ProductModel(String color, String size, int stock, int id) {
 		super();
 		this.color = color;
 		this.size = size;
 		this.stock = stock;
+		this.setId(id);
 	}
 	//default constructor
 	public ProductModel() {
@@ -36,6 +38,12 @@ public class ProductModel {
 	}
 	public void setStock(int stock) {
 		this.stock = stock;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

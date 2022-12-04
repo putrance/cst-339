@@ -6,15 +6,21 @@
 		<table style="width:50%" class="table table-bordered table-striped">
 			<thead>
 				<tr>
+					<th style="text-align:center">Product ID</th>
 					<th style="text-align:center">Shirt Color</th>
 					<th style="text-align:center">Shirt Size</th>
 					<th style="text-align:center">In Stock</th>
+					<th sec:authorize="hasRole('ROLE_ADMIN')" style="text-align:center">Edit</th>
+					<th sec:authorize="hasRole('ROLE_ADMIN')" style="text-align:center">Delete</th>
 			</thead>
 			<tbody>
 				<tr th:each="shirt : ${shirts}">
+					<td style="text-align:center"><h5 th:text="${shirt.id}">blue</h5></td>
 					<td style="text-align:center"><h5 th:text="${shirt.color}">blue</h5></td>
 					<td style="text-align:center"><h5 th:text="${shirt.size}">large</h5></td>
 					<td style="text-align:center"><h5 th:text="${shirt.stock}">large</h5></td>
+					<td sec:authorize="hasRole('ROLE_ADMIN')" style="text-align:center"><a th:href="@{/edit_product(productId=${shirt.id})}" class="btn btn-info">Edit Product</a></td>
+					<td sec:authorize="hasRole('ROLE_ADMIN')" style="text-align:center"><a th:href="@{/delete_product(productId=${shirt.id})}" class="btn btn-danger">Delete Product</a></td>
 				</tr>
 			</tbody>
 		</table>
