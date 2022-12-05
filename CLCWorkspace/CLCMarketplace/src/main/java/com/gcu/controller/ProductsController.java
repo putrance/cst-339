@@ -86,7 +86,7 @@ public class ProductsController {
 		
 		
 		List<ProductForm> productsList = new ArrayList<ProductForm>();
-		productsList.add(new ProductForm(product.getColor(), product.getSize(), product.getStock()));
+		productsList.add(new ProductForm(product.getColor(), product.getSize(), product.getStock(), product.getId()));
 		
 		
 		model.addAttribute("title", "My products");
@@ -122,7 +122,7 @@ public class ProductsController {
 		System.out.println(productId);
 	    System.out.println("test editing product");
 	    
-	    ProductModel product = new ProductModel();
+	    ProductForm product = new ProductForm();
 	    
 	    product.setId(productId);
 	    
@@ -130,7 +130,7 @@ public class ProductsController {
 	}
 	
 	@PostMapping("/doProductUpdate")
-	public String doProductUpdate(@Valid ProductModel product, BindingResult bindingResult, Model model) {
+	public String doProductUpdate(@Valid ProductForm product, BindingResult bindingResult, Model model) {
 		
 		if(bindingResult.hasErrors()) {
 			model.addAttribute("title", "Update Product");

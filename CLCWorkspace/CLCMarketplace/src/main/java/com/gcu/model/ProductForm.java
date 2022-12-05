@@ -19,13 +19,15 @@ public class ProductForm {
 	@NotNull(message="Product stock qty is a required field")
 	@Range(min=0L, message="Product stock qty must be a number between 1 and 32")
 	private int stock;
+	private int id;
 	
 	//Constructor
-	public ProductForm(String color, String size, int stock) {
+	public ProductForm(String color, String size, int stock, int id) {
 		super();
 		this.color = color;
 		this.size = size;
 		this.stock = stock;
+		this.id = id;
 	}
 	//default constructor
 	public ProductForm() {
@@ -50,6 +52,12 @@ public class ProductForm {
 	}
 	public void setStock(int stock) {
 		this.stock = stock;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	
