@@ -1,6 +1,7 @@
 package com.gcu.data;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.sql.DataSource;
 
@@ -9,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import com.gcu.data.repository.UsersRepository;
+import com.gcu.entity.ProductEntity;
 import com.gcu.entity.UserEntity;
 
 @Service
@@ -32,7 +34,7 @@ public class UserDataAccess implements UserDataAccessInterface<UserEntity> {
 	}
 
 	@Override
-	public UserEntity findById(int id) {
+	public Optional<ProductEntity> findById(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
