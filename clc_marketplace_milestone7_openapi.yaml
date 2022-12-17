@@ -1,0 +1,46 @@
+openapi: 3.0.3
+info:
+  title: Swagger CST339 - CLC Marketplace
+  description: |-
+    This is swagger documentation for the CLC Marketplace group assignment in CST-339. The API allows users to get a list of all products or a specific product by Id returned in a JSON format.
+  contact:
+    email: aaron.rawley@my.gcu.edu
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/service
+tags:
+  - name: products
+    description: Everything about your Products
+paths:
+  /products:
+    get:
+      tags:
+        - products
+      summary: Return products in JSON format
+      description: A GET request with no values returns the list of current products in JSON format.
+      operationId: ListProductsInJSON
+      responses:
+        '200':
+          description: successful operation
+        '500':
+          description: Invalid status value
+  /product/{productId}:
+    get:
+      tags:
+        - products
+      summary: Return a product by id in JSON format
+      parameters:
+        - in: path
+          name: productId
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the product to get
+      description: A GET request with the numeric ID of a product returns the first product found in the database in a JSON format.
+      operationId: ListProductByIdInJSON
+      responses:
+        '200':
+          description: successful operation
+        '500':
+          description: Invalid status value
+  
