@@ -2,6 +2,7 @@ package com.gcu.data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.sql.DataSource;
 
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.gcu.data.repository.ProductsRepository;
 import com.gcu.entity.ProductEntity;
+import com.gcu.model.ProductRowMapper;
 
 @Service
 public class ProductDataAccess implements UserDataAccessInterface<ProductEntity> {
@@ -43,11 +45,16 @@ public class ProductDataAccess implements UserDataAccessInterface<ProductEntity>
 	}
 
 	@Override
-	public ProductEntity findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Optional<ProductEntity> findById(int id) {
+	   String sql = """
+	           SELECT id, color, size, stock
+	           FROM products
+	           WHERE id = ?;
+	           """;
+	   return jdbcTemplateObject.query(sql,new ProductRowMapper(),id)
+	           .stream()
+	           .findFirst();
 	}
-
 	@Override
 	public boolean create(ProductEntity product) {
 		String sql = "INSERT INTO products(color, size, stock) VALUES(?, ?, ?)";
