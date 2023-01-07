@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-
+//Authentication failure interface
 public class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler {
 
 	  @Override

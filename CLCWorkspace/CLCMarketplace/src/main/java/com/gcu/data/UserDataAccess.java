@@ -12,33 +12,34 @@ import org.springframework.stereotype.Service;
 import com.gcu.data.repository.UsersRepository;
 import com.gcu.entity.ProductEntity;
 import com.gcu.entity.UserEntity;
-
+//User data access service class
 @Service
 public class UserDataAccess implements UserDataAccessInterface<UserEntity> {
+	//Variables
 	@Autowired
 	private UsersRepository userRepository;
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplateObject;
 	
-	
+	//constructor
 	public UserDataAccess(UsersRepository userRepository, DataSource dataSource, JdbcTemplate jdbcTemplateObject) {
 		this.userRepository = userRepository;
 		this.dataSource = dataSource;
 		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
 	}
-
+	//find all users method
 	@Override
 	public List<UserEntity> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	//find users by user ID
 	@Override
 	public Optional<ProductEntity> findById(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	//create new user method
 	@Override
 	public boolean create(UserEntity user) {
 		String sql = "INSERT INTO USERS(username, password, email, phoneNumber, firstName, lastName) VALUES(?, ?, ?, ?, ?, ?)";
@@ -64,13 +65,13 @@ public class UserDataAccess implements UserDataAccessInterface<UserEntity> {
 		}
 		return true;
 	}
-
+	//update users
 	@Override
 	public boolean update(UserEntity t) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	//delete users
 	@Override
 	public boolean delete(UserEntity t) {
 		// TODO Auto-generated method stub

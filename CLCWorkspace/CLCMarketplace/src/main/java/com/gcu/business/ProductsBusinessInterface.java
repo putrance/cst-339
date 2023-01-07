@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.gcu.model.ProductModel;
 
+//Products interface
 public interface ProductsBusinessInterface {
 	public void Test();
 	public List<ProductModel> getProducts();

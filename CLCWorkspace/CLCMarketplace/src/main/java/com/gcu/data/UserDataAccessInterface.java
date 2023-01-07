@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.gcu.entity.ProductEntity;
 
+//User data access interface
 public interface UserDataAccessInterface <T> {
 	public List<T> findAll();
 	public Optional<ProductEntity> findById(int id);
