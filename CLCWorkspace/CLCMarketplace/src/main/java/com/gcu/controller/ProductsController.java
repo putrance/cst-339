@@ -28,17 +28,19 @@ import com.gcu.model.ProductForm;
 import com.gcu.model.ProductModel;
 import com.gcu.model.UserModel;
 
-//TODO: Fix data validation error
+//TODO: Fix data validation error. Error handing validation is still an issue. No known fix for bug. It follows the same structure as the Registration error handling but still fails.
+
 
 @Controller
 @RequestMapping("/")
 public class ProductsController {
-	
+	//Variables
 	@Autowired
 	private ProductsRepository productsRepository;
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplateObject;
 	
+	//Constructor
 	public ProductsController(ProductsRepository ProductsRepository, DataSource dataSource, JdbcTemplate jdbcTemplateObject) {
 		this.productsRepository = ProductsRepository;
 		this.dataSource = dataSource;
@@ -52,11 +54,12 @@ public class ProductsController {
 	@Autowired
 	private ProductsBusinessInterface productinterface;
 	
+	//default constructor
 	@ModelAttribute
 	ProductForm product() {
 	  return new ProductForm();
 	}
-	
+	//Model display method
 	@GetMapping("/ProductsAddition")
 	public String display(Model model) {
 		model.addAttribute("title", "Product Addition Form");
@@ -64,6 +67,7 @@ public class ProductsController {
 		model.addAttribute("productForm", new ProductForm());
 		return "ProductsAddition";
 	}
+	//Mehod for inserting products to product list
 	@PostMapping("/doProduct")
 	public String doProduct(@Valid ProductForm product, BindingResult bindingResult, Model model) {
 		
@@ -101,7 +105,7 @@ public class ProductsController {
 		
 		return "Products";
 	}
-	
+	//delete button
 	@RequestMapping(value = "/delete_product", method = RequestMethod.GET)
 	public String handleDeleteProduct(@RequestParam(name="productId")String productId) {
 		
@@ -135,7 +139,7 @@ public class ProductsController {
 	    
 	    return "ProductsUpdate";
 	}
-	
+	//update products list
 	@PostMapping("/doProductUpdate")
 	public String doProductUpdate(@Valid ProductForm product, BindingResult bindingResult, Model model) {
 		

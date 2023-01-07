@@ -3,10 +3,11 @@ package com.gcu.entity;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-
+//User Entity class
 @Table("users")
 public class UserEntity {
 	
+	//variables
 	@Column("firstName")
 	private String firstName;
 	@Column("lastName")
@@ -22,6 +23,7 @@ public class UserEntity {
 	@Column("authority")
 	private String authority;
 	
+	//constructor
 	public UserEntity(String firstName, String lastName, String email, String phoneNumber, String username,
 			String password) {
 		super();
@@ -33,7 +35,7 @@ public class UserEntity {
 		this.password = password;
 	}
 	
-
+	//getters and setters
 	public String getFirstName() {
 		return firstName;
 	}	
