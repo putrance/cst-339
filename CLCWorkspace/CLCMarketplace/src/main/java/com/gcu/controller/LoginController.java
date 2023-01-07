@@ -14,19 +14,16 @@ import com.gcu.model.LoginModel;
 @Controller
 @RequestMapping("/")
 public class LoginController
-{
-//	@Autowired
-//	private CustomAuthenticationSuccessHandler loginSuccessHandler;
-//	
-//	@Autowired
-//	private CustomAuthenticationFailureHandler loginFailureHandler;
-	
+{	
+	//Sets login page attributes and sends them to login.html
 	@GetMapping("/login")
 	public String display(Model model) {
 		model.addAttribute("title", "Login Form");
 		model.addAttribute("loginModel", new LoginModel());
 		return "login";
 	}
+	
+	//Upon user login, checks for validation errors and performs logins if data is validated
 	@PostMapping("/doLogin")
 	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model) 
 	{

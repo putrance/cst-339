@@ -1,7 +1,9 @@
 package com.gcu.model;
 
-
+//User Model
 public class UserModel {
+	
+	//Properties
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -9,6 +11,8 @@ public class UserModel {
 	private String username;
 	private String password;		
 	
+	
+	//Constructors
 	public UserModel(String firstName, String lastName, String email, String phoneNumber, String username,
 			String password) {
 		super();
@@ -25,6 +29,7 @@ public class UserModel {
 	}
 
 
+	//Getters and setters
 	public String getFirstName() {
 		return firstName;
 	}
@@ -71,8 +76,5 @@ public class UserModel {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	
-	
-	
+	}	
 }

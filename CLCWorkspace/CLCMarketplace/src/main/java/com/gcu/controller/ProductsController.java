@@ -120,9 +120,6 @@ public class ProductsController {
 	    return "redirect:/";
 	}
 	
-	
-	//
-	//
 	//To be completed, Flow -> Pass ID from Thymeleaf, Get Object with ID, Send user to input form with prepopulated info, Submit triggers /doProductUpdate to perform SQL UPDATE statement against items matching id
 	@RequestMapping(value = "/edit_product", method = RequestMethod.GET)
 	public String handleeditProduct(@RequestParam(name="productId")int productId) {

@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.gcu.entity.ProductEntity;
 
+// Row mapper for the product entity
 public class ProductRowMapper implements RowMapper<ProductEntity> {
 
 	@Override
