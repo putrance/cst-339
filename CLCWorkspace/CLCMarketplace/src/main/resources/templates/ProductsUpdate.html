@@ -1,3 +1,4 @@
+<!--Propper import of thymeleaf template-->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
 	<head>
@@ -14,6 +15,7 @@
 						<td><input type="text" th:field="*{id}" th:value="*{id}" ></td>
 					</tr>
 					<tr>
+					<!--Error handling based for each product details-->
 						<td>Color:</td>
 						<td><input type="text" th:field="*{color}" ></td>
 						<td><h5 style="color:red" th:if="${#fields.hasErrors('color')}" th:errors="*{color}">Color Error</h5></td>

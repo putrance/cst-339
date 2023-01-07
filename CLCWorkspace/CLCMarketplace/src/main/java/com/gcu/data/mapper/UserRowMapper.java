@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.gcu.entity.UserEntity;
-
+//Class for row mapping users to be displayed correctly on live web site
 public class UserRowMapper implements RowMapper<UserEntity> {
 
 	@Override

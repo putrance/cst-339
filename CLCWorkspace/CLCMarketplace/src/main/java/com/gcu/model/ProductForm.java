@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.Range;
 //model for Product additions
 public class ProductForm {
 	
-	//Data validation
+	//error handling
 	@NotNull(message="Product color is a required field")
 	@Size(min=1, max=32, message="Product color must be within 1 to 32 characters")
 	private String color;

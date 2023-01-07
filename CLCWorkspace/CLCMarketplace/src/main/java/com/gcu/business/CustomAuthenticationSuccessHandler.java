@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-
+//Authentication Success interface
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
 	@Override

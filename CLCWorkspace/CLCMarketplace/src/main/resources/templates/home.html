@@ -1,3 +1,4 @@
+<!--Propper import of thymeleaf template-->
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
 	<h2 th:text="${title}">This is my default text </h2><br/>
 	<body>
@@ -6,6 +7,7 @@
 		<table style="width:50%" class="table table-bordered table-striped">
 			<thead>
 				<tr>
+				<!--Product details-->
 					<th style="text-align:center">Product ID</th>
 					<th style="text-align:center">Shirt Color</th>
 					<th style="text-align:center">Shirt Size</th>
@@ -15,6 +17,7 @@
 			</thead>
 			<tbody>
 				<tr th:each="shirt : ${shirts}">
+				<!--Shirt details-->
 					<td style="text-align:center"><h5 th:text="${shirt.id}">blue</h5></td>
 					<td style="text-align:center"><h5 th:text="${shirt.color}">blue</h5></td>
 					<td style="text-align:center"><h5 th:text="${shirt.size}">large</h5></td>

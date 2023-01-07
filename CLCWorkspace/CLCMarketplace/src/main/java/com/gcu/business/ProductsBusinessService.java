@@ -9,6 +9,7 @@ import com.gcu.data.ProductDataAccess;
 import com.gcu.entity.ProductEntity;
 import com.gcu.model.ProductModel;
 
+//Products Service interface
 public class ProductsBusinessService implements ProductsBusinessInterface {
 
 	@Autowired
@@ -19,7 +20,7 @@ public class ProductsBusinessService implements ProductsBusinessInterface {
 		// TODO Auto-generated method stub
 		System.out.println("Hello from the OrdersBusinessService");
 	}
-
+	//get products method
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List getProducts() {
@@ -32,19 +33,19 @@ public class ProductsBusinessService implements ProductsBusinessInterface {
 		}		
 		return productDomain;
 	}
-
+	//Initiate 
 	@Override
 	public void init() {
 		System.out.println("Hello from the OrdersBusinessService init");
 		
 	}
-
+	//destroy
 	@Override
 	public void destroy() {
 		System.out.println("Hello from the OrdersBusinessService destroy");
 		
 	}
-
+	//delete products returns null as they are no longer a product after deletion
 	@Override
 	public List<ProductModel> deleteProducts() {
 		// TODO Auto-generated method stub

@@ -2,11 +2,10 @@ package com.gcu.model;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-// Registration form
+//Registration form class
 public class RegistrationForm {
 	
-	// Data validation
+	//variables and error handling
 	@NotNull(message="First name is a required field")
 	@Size(min=1, max=32, message="First Name must be between 1 and 32 characters")
 	private String firstName;
@@ -31,7 +30,7 @@ public class RegistrationForm {
 	@Size(min=1, max=32, message="Password must be between 1 and 32 characters")
 	private String password;		
 	
-	// Constructors
+	//Constructor
 	public RegistrationForm(String firstName, String lastName, String email, String phoneNumber, String username,
 			String password) {
 		super();
@@ -42,12 +41,12 @@ public class RegistrationForm {
 		this.username = username;
 		this.password = password;
 	}
-
+	//default constructor
 	public RegistrationForm() {
 		super();
 	}
 
-	//Getters and setters
+	//getters and setters
 	public String getFirstName() {
 		return firstName;
 	}
@@ -94,5 +93,8 @@ public class RegistrationForm {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}	
+	}
+	
+	
+	
 }
