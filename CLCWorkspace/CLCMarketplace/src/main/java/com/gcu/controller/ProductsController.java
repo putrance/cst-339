@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,6 +34,7 @@ import com.gcu.model.UserModel;
 @RequestMapping("/")
 public class ProductsController {
 	
+	@Autowired
 	private ProductsRepository productsRepository;
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplateObject;
@@ -50,10 +52,15 @@ public class ProductsController {
 	@Autowired
 	private ProductsBusinessInterface productinterface;
 	
+	@ModelAttribute
+	ProductForm product() {
+	  return new ProductForm();
+	}
+	
 	@GetMapping("/ProductsAddition")
 	public String display(Model model) {
 		model.addAttribute("title", "Product Addition Form");
-		model.addAttribute("product", new ProductModel());
+		model.addAttribute("products", new ProductModel());
 		model.addAttribute("productForm", new ProductForm());
 		return "ProductsAddition";
 	}
@@ -141,7 +148,7 @@ public class ProductsController {
 		
 		
 		model.addAttribute("title", "Update Product");
-		model.addAttribute("product", product);					
+		model.addAttribute("products", product);					
 		
 		return "redirect:/";
 	}
