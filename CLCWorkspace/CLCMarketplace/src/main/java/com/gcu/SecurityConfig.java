@@ -17,44 +17,29 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 
 import com.gcu.business.*;
 
-
+// Import WebSecurityConfigurerAdapater librarys
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-//  @Override
-//  protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-//    auth.inMemoryAuthentication()
-//        .withUser("user").password(passwordEncoder().encode("password")).roles("USER")
-//        .and()
-//        .withUser("admin").password(passwordEncoder().encode("password")).roles("ADMIN");
-//  }
-	
+	//Autowire Authentication Datasource
 	@Autowired
 	private DataSource dataSource;
-
+	//Configure Auth Manager to use Datasource
 	@Override
 	public void configure(AuthenticationManagerBuilder auth)
 	    throws Exception {
 	    
 	  auth.jdbcAuthentication()
 	      .dataSource(dataSource)
-	    /*  .withDefaultSchema()
-	      	.withUser(User.withUsername("user")
-	          .password(passwordEncoder().encode("password"))
-	          .roles("USER"))*/
 	      ;
 	}
 	
-//	@Bean
-//	  public UserDetailsService jdbcUserDetailsService(DataSource dataSource) {
-//	    return (UserDetailsService) new JdbcUserDetailsManager(dataSource);
-//	  }
-
+//Create passwordencoder bean
   @Bean
   public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
   }
-
+//Set HTTP Security
   @Override
   protected void configure(final HttpSecurity http) throws Exception {
 
@@ -90,17 +75,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     	.successHandler(authenticationSuccessHandler());
  //   	.failureHandler(authenticationFailureHandler())
   }
-
+//Create Custom Auth Success Handler
   @Bean(name="authenticationSuccessHandler")
   AuthenticationSuccessHandler authenticationSuccessHandler() {
     return new CustomAuthenticationSuccessHandler();
   }
-
+//Create Custom Auth failure Handler
   @Bean(name="authenticationFailureHandler")
   AuthenticationFailureHandler authenticationFailureHandler() {
     return new CustomAuthenticationFailureHandler();
   }
-  
+ //WebSecurity filter to allow public access to static content 
   @Override
   public void configure(WebSecurity web) {
     web.ignoring()
