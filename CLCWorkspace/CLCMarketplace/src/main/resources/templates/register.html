@@ -1,3 +1,4 @@
+<!--Propper import of thymeleaf template-->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
 	<head>
@@ -9,6 +10,7 @@
 		<div layout:fragment="content">
 			<form action="#" th:action="@{doRegister}" th:object="${registrationForm}" method="post">
 				<table>
+				<!--Registration form required details and error handling-->
 					<tr>
 						<td>First Name:</td>
 						<td><input type="text" th:field="*{firstName}" ></td>

@@ -17,16 +17,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+//Registration Controller class
 @Controller
 @RequestMapping("/")
 public class RegistrationController {
-		
+		//variables
 		@Autowired
 		UserDataAccess service;
 		
 		@Autowired
 		private  PasswordEncoder passwordEncoder;
 		
+		//display registration method
 		@GetMapping("/register")
 		public String display(Model model) {
 			model.addAttribute("title", "Registration Form");
@@ -34,6 +36,7 @@ public class RegistrationController {
 			//model.addAttribute("users", new ArrayList<UserModel>());
 			return "register";
 		}
+		//method to add user to registered users
 		@PostMapping("/doRegister")
 		public String doRegister(@Valid RegistrationForm registration, BindingResult bindingResult, Model model) {
 			

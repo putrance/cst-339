@@ -1,3 +1,4 @@
+<!--Propper import of thymeleaf template-->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
 	<head>
@@ -7,8 +8,9 @@
 	
 	<body>
 		<div layout:fragment="content">
-			<form action="#" th:action="@{doProduct}" th:object="${product}" method="post">
+			<form action="#" th:action="@{doProduct}" th:object="${products}" method="post">
 				<table>
+				<!--Product detials and Error handling for products-->
 					<tr>
 						<td>Color:</td>
 						<td><input type="text" th:field="*{color}" ></td>

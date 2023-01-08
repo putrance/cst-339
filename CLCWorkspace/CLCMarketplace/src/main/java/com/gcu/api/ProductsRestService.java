@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gcu.data.ProductDataAccess;
 import com.gcu.entity.ProductEntity;
-
+//Createe Rest API Controller
 @RestController
 @RequestMapping("/service")
 public class ProductsRestService {
-	
+	//Autowire access to Product Data DB
 	@Autowired
 	ProductDataAccess service;
-	
+	//Create get all products API Endpoint
 	@GetMapping(path="/products")
 	public ResponseEntity<?> getProducts()
 	{
@@ -38,7 +38,7 @@ public class ProductsRestService {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	
+	//Create get a product by ID API Endpoint
 	@GetMapping(path="/product")
 	public ResponseEntity<?> getProductById(@RequestParam(name="productId")int productId) {
 		try

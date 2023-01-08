@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.gcu.entity.ProductEntity;
-
+//Create Product row mapper to allow for querying of product rows via ID
 public class ProductRowMapper implements RowMapper<ProductEntity> {
 
 	@Override

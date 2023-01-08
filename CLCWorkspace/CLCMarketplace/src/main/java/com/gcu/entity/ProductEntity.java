@@ -2,7 +2,7 @@ package com.gcu.entity;
 
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
-
+//Product Entity class
 @Table("products")
 public class ProductEntity {
 	
